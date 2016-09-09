@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Sport Poll</title>
+	<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+	<script src="jquery-3.1.0.min.js" type="text/javascript"></script>
+	
+</head>
+
+<style>
+body {  
+	background: #6F7B8B; /* old browsers */
+    background: -webkit-linear-gradient(top, #6F7B8B 20%, #8D96A5 58%);
+    background: -moz-linear-gradient(top, #6F7B8B 20%, #8D96A5 58%);
+    background: -o-linear-gradient(top, #6F7B8B 20%, #8D96A5 58%);
+    background: -ms-linear-gradient(top, #6F7B8B 20%, #8D96A5 58%);
+    background: linear-gradient(top, #6F7B8B 20%, #8D96A5 58%); /* firefox */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(20%,#6F7B8B), color-stop(58%,#8D96A5)); /* webkit */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6F7B8B', endColorstr='#8D96A5',GradientType=0 ); /* ie */
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    color: #4A4A4A ;
+    text-align: center;
+}
+div {  
+    padding: 40px 0;  
+    border-bottom: #ccc;  
+}
+h2 {
+	font-size: 20px;
+    font-weight: bold;
+    margin-top: 5px; 
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+h3 {
+/*	font-size: 20px;
+    margin-top: 5px;  
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);*/
+    font-family: 'Times New Roman', Georgia, Serif;
+}
+#style {
+	display: block;
+    width: 700px;
+    margin: 20px auto;
+    padding: 12px;
+    /*border-radius*/
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    /*box-shadow*/
+    -webkit-box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    background-color: #ccc;
+}
+#sport {  
+    background: #a8c4c0;
+    background: -moz-linear-gradient(top,  #a8c4c0 0%, #7aa5a2 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a8c4c0), color-stop(100%,#7aa5a2));
+    background: -webkit-linear-gradient(top,  #a8c4c0 0%,#7aa5a2 100%);
+    background: -o-linear-gradient(top,  #a8c4c0 0%,#7aa5a2 100%);
+    background: -ms-linear-gradient(top,  #a8c4c0 0%,#7aa5a2 100%);
+    background: linear-gradient(top,  #a8c4c0 0%,#7aa5a2 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a8c4c0', endColorstr='#7aa5a2',GradientType=0 );
+    
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    padding: 0 20px;  
+    line-height: 50px;
+    height: 50px;
+    margin-top: 5px; 
+    margin-left: -35px;   
+    position: relative;  
+    width: 300px;  
+    box-shadow: 0px 3px 4px 0px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0px 3px 4px 0px rgba(0,0,0,0.3);
+    -webkit-box-shadow: 0px 3px 4px 0px rgba(0,0,0,0.3);
+    color: #3b3a3b;  
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);  
+}  
+#sport:after {  
+    position: absolute;
+    content: '';
+    width: 0; height: 0;  
+    line-height: 0;  
+    border-left: 15px solid transparent;  
+    border-top: 10px solid #729c9a;  
+    bottom: -10px;  
+    left: 0;  
+    position: absolute;  
+    z-index: -1;
+}  
+#sport:before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    height: 39px;
+    border-top: 1px solid rgba(255,255,255,0.5);
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+    width: 100%;
+    left: 0;
+}
+#sport_id {
+	visibility: hidden;
+	padding: 0px;
+}
+
+.p_left {
+	margin-left: 20px;
+	float:left;
+}
+.p_middle {
+	float:middle;
+}
+.p_right {
+	float:right;
+	margin-right: 20px;
+}
+#home {
+	float:left;
+	margin-left: 20px;
+}
+#away {
+	float:right;
+	margin-right: 20px;
+}
+#action{
+	padding-top: 80px;
+}
+button{
+	display: inline-block;  
+    zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */  
+    *display: inline;  
+    vertical-align: baseline;  
+    margin: 0 2px;  
+    outline: none;  
+    cursor: pointer;  
+    text-align: center;  
+    text-decoration: none;  
+    font: 14px/100% Arial, Helvetica, sans-serif;  
+    padding: .5em 2em .55em;  
+    text-shadow: 0 1px 1px rgba(0,0,0,.3);  
+    -webkit-border-radius: .5em;   
+    -moz-border-radius: .5em;  
+    border-radius: .5em;  
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);  
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);  
+    box-shadow: 0 1px 2px rgba(0,0,0,.2); 
+}
+</style>
+
+<body>
+	<div id="style">
+		<div id="sport"></div>
+		<div id="sport_id"></div>
+		<div id="title">
+			<h2 class="p_left">Home Team</h2>
+			<h2 class="p_right">Away Team</h2>
+		</div>
+		<hr/>
+		<div id="group">
+<!-- 			<div id="home" style="float:left"></div>
+			<div id="away" style="float:right"></div> -->
+		</div>
+		<div id="action">
+			<button type="button" onclick="home()" class="p_left">Home</button>
+			<button type="button" onclick="draw()" class="p_middle">Draw</button>
+			<button type="button" onclick="away()" class="p_right">Away</button>
+			<!-- <button type="button" onclick="cal()">Calculate</button> -->
+		</div>
+	</div>
+
+
+<script>
+var count_home = 0;
+var count_away = 0;
+var count_draw = 0;
+var result = Object();
+
+$(document).ready(function() {
+	$.ajax({
+	        type:"GET",
+	        url:"test-assignment.json",
+	        dataType: "json",
+	        success: function(data){
+	            //使用$.each方法遍历返回的数据date,插入到id为#result中
+	        var source = []
+	        $.each(data,function (i) {
+	        	source.push(data[i]);
+	        });
+
+	        var random = Math.floor(Math.random()*source.length+1);
+	        var sport = source[random].sport; 
+	        var home = source[random].homeName;
+	        var away = source[random].awayName;
+	        var sport_id = source[random].id;
+	        $("#sport_id").append(sport_id);
+	        $("#sport").append(sport);
+	        $("#group").append("<h3 id='home'>" + home + "</h3>");
+	        $("#group").append("<h3 id='away'>" + away + "</h3>");
+	        }
+	    });
+});
+
+
+function home(){
+	var homeName = $("#home").text();
+	count_home = count_home + 1;
+	//result[homeName] = count_home;
+	sessionStorage.setItem(homeName, count_home);
+	//console.log(result);
+	//window.location.reload();
+};
+
+function away(){
+	var awayName = $("#away").text();
+	count_away = count_away + 1;
+	sessionStorage.setItem(awayName, count_away);
+	//result[awayName] =  count_away;
+	//console.log(result);
+	//window.location.reload();
+};
+
+function draw(){
+	var drawName = $("#sport_id").text();
+	count_draw = count_draw + 1;
+	//result[drawName] = count_draw;
+	sessionStorage.setItem(drawName, count_draw);
+	//console.log(result);
+	//window.location.reload();
+};
+
+var storage = window.sessionStorage;  
+for (var i=0, len = storage.length; i  <  len; i++){     
+	var key = storage.key(i);       
+	var value = storage.getItem(key);     
+	console.log(key + "=" + value);  
+ } 
+//console.log("session value is " + sessionStorage.getItem("key"));
+
+// function count_result(name,number)
+// {
+// 	this.name=name;
+// 	this.number=number;
+// };
+
+// function cal(){
+// 	for(var key in result) {
+//     	var value = result[key];
+//     	//sessionStorage.setIem(key, JSON.stringify(value));
+//     	console.log(key + " " + value);
+// 	}
+// };
+
+// function sessionStoragePut(key, value){
+// 	sessionStorage.setIem(key, JSON.stringify(value));
+// }
+
+// function sessionStorageGet(key, isRemove){
+// 	var result = JSON.parse(sessionStorage.getItem(key));
+// 	if(isRemove){
+// 		sessionStorage.removeItem(key);
+// 	}
+// 	return result;
+// }
+
+</script>
+</body>
+</html>
