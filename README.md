@@ -1,1 +1,1 @@
-# simple-poll
+# simple sport-poll project
